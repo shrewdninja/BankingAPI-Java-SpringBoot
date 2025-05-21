@@ -92,6 +92,7 @@ The following assumptions were made during development:
 - **No Authentication/Authorization**: The API is unsecured, assuming it’s for internal or development use. Production deployment would require Spring Security.
 - **No Pagination**: Endpoints like `GET /api/transactions` and `GET /api/accounts` return all records without pagination or filtering, assuming small datasets.
 - **BigDecimal Handling**:
+  - Inputs do not contain leading or trailing 0s.
   - Balances and amounts are validated to have at most two decimal places without rounding (e.g., `100.999` triggers a `400 Bad Request`).
 - **Timestamp Generation**: Transaction timestamps are generated server-side using `LocalDateTime.now()` and cannot be set by clients.
 - **Swagger UI**: Used for API documentation and testing, accessible at `http://localhost:8080/swagger-ui.html`. Assumes Springdoc 2.6.0 is sufficient (upgrade to 2.8.0 recommended if rendering issues occur).
